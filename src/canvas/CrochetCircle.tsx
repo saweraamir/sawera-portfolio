@@ -1,5 +1,5 @@
-﻿import { useMemo, useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+﻿import { useEffect, useMemo, useRef } from 'react'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 
@@ -112,6 +112,30 @@ function SpinGroup({
   return <group ref={ref}>{children}</group>
 }
 
+/** Keeps the whole crochet circle centered and padded in frame,
+ *  adapting the camera distance to the canvas size and current rounds. */
+function CameraRig({ maxRadius }: { maxRadius: number }) {
+  const camera = useThree((s) => s.camera)
+  const size = useThree((s) => s.size)
+
+  useEffect(() => {
+    const persp = camera as THREE.PerspectiveCamera
+    const fov = (persp.fov * Math.PI) / 180
+    const aspect = size.width / size.height
+    const halfH = maxRadius * 1.15 // a little padding
+    const dist = Math.max(
+      halfH / Math.tan(fov / 2),
+      halfH / (Math.tan(fov / 2) * aspect),
+    )
+    // Elevated view direction (0, 0.62, 1), normalized.
+    persp.position.set(0, 0.527 * dist, 0.85 * dist)
+    persp.lookAt(0, 0, 0)
+    persp.updateProjectionMatrix()
+  }, [camera, size, maxRadius])
+
+  return null
+}
+
 export default function CrochetCircle({ rounds }: { rounds: number }) {
   const reducedMotion = useMemo(
     () =>
@@ -129,11 +153,8 @@ export default function CrochetCircle({ rounds }: { rounds: number }) {
   )
 
   return (
-    <Canvas
-      dpr={[1, 2]}
-      camera={{ position: [0, 8.5, 10], fov: 45 }}
-      onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
-    >
+    <Canvas dpr={[1, 2]} camera={{ position: [0, 8.5, 10], fov: 45 }}>
+      <CameraRig maxRadius={rounds * 0.3 + 0.25} />
       <ambientLight intensity={0.8} />
       <pointLight position={[3, 3, 4]} intensity={60} color="#ffd9a8" />
       <SpinGroup reducedMotion={reducedMotion}>

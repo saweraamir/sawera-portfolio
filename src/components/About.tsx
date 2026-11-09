@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, useReducedMotion } from 'framer-motion'
-import { about, personal  } from '../data/content'
+import { about, personal } from '../data/content'
 import SectionHeading from './SectionHeading'
+import Reveal from './Reveal'
 
 function StatCard({ value, label }: { value: string; label: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -103,10 +104,12 @@ export default function About() {
 
         {/* Text — below on mobile, right column on desktop */}
         <motion.div {...textAnim}>
-          <SectionHeading>About me</SectionHeading>
+          <SectionHeading number="01" title="About me" />
           <div className="mt-6 space-y-4 leading-relaxed text-slate-300">
-            {about.paragraphs.map((paragraph) => (
-              <p key={paragraph.slice(0, 24)}>{paragraph}</p>
+            {about.paragraphs.map((paragraph, i) => (
+              <Reveal key={paragraph.slice(0, 24)} delay={i * 0.1}>
+                <p className="leading-relaxed text-slate-300">{paragraph}</p>
+              </Reveal>
             ))}
           </div>
           <div className="mt-8 grid grid-cols-2 gap-4">

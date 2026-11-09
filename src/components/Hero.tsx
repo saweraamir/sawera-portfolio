@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import Magnetic from './Magnetic'
 import { personal } from '../data/content'
 
 const YarnBall = lazy(() => import('../canvas/YarnBall'))
@@ -90,28 +91,46 @@ export default function Hero() {
         <p className="text-sm font-semibold uppercase tracking-widest text-coral">
           Hi, I&rsquo;m
         </p>
-        <h1 className="mt-2 text-5xl font-bold text-white sm:text-6xl lg:text-7xl">
-          {personal.name}
-        </h1>
+        <h1 className="mt-2 whitespace-nowrap font-heading font-bold leading-[0.95] text-[clamp(3rem,9vw,9rem)] md:text-[clamp(3rem,7vw,7.5rem)] lg:text-[clamp(3rem,9vw,9rem)]">
+  <span className="bg-gradient-to-r from-coral via-mustard to-softpink bg-clip-text text-transparent">
+    {reducedMotion
+      ? personal.name
+      : personal.name.split('').map((ch, i) => (
+          <motion.span
+            key={`${ch}-${i}`}
+            className="inline-block"
+            initial={{ y: '0.6em', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 + i * 0.06, duration: 0.6, ease: 'easeOut' }}
+          >
+            {ch}
+          </motion.span>
+        ))}
+  </span>
+</h1>
         <p className="mt-3 text-balance text-xl text-slate-300">{personal.role}</p>
         <div className="mt-4">
           <Typewriter />
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start">
-          <a
-            href="#projects"
-            className="rounded-full bg-coral px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-softpink"
-          >
-            View my work
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-coral px-6 py-3 text-sm font-semibold text-coral transition-colors hover:bg-coral/10"
-          >
-            Contact me
-          </a>
-        </div>
+            <Magnetic>
+              <a
+                href="#projects"
+                className="rounded-full bg-coral px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-softpink"
+              >
+                View my work
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="#contact"
+                className="rounded-full border border-coral px-6 py-3 text-sm font-semibold text-coral transition-colors hover:bg-coral/10"
+              >
+                Contact me
+              </a>
+            </Magnetic>
+          </div>
       </motion.div>
     </section>
   )

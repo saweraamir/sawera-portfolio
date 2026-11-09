@@ -189,7 +189,7 @@ export default function Projects() {
   return (
     <section id="projects" className="scroll-mt-20 px-4 py-24 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading>`Projects</SectionHeading>
+        <SectionHeading number="04" title="Projects" />
 
         {/* Featured project */}
         {featured && (
@@ -202,7 +202,7 @@ export default function Projects() {
             <div className="grid items-center gap-8 lg:grid-cols-2">
               {/* Interactive demo */}
               <div>
-                <div className="h-[320px] md:h-[400px]">
+                <div className="mx-auto aspect-square w-full max-w-md lg:aspect-auto lg:h-[400px] lg:max-w-none">
                   <Suspense fallback={<CanvasSpinner />}>
                     <CrochetCircle rounds={rounds} />
                   </Suspense>

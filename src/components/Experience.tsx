@@ -99,7 +99,7 @@ export default function Experience() {
       className="scroll-mt-20 px-4 py-24 sm:px-6"
     >
       <div className="mx-auto max-w-6xl">
-        <SectionHeading>`Experience</SectionHeading>
+        <SectionHeading number="03" title="Experience" />
 
         <div className="relative mt-12">
           {/* Faint base line: left on mobile, centered on desktop */}

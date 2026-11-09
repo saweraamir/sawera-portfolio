@@ -1,5 +1,6 @@
-﻿import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useScroll } from 'framer-motion'
+import Magnetic from './Magnetic'
 import { FileText, Menu, X } from 'lucide-react'
 import { personal } from '../data/content'
 
@@ -81,7 +82,7 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
+          <Magnetic>          <a
             href={personal.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -89,7 +90,7 @@ export default function Navbar() {
           >
             <FileText size={16} />
             Resume
-          </a>
+          </a>          </Magnetic>
         </div>
 
         {/* Mobile hamburger */}

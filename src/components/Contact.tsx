@@ -3,6 +3,8 @@ import { Check, Copy, Download, Mail } from 'lucide-react'
 import { FaLinkedin } from 'react-icons/fa'
 import { SiGithub } from 'react-icons/si'
 import { personal, socials } from '../data/content'
+import Magnetic from './Magnetic'
+import Reveal from './Reveal'
 
 const socialIcons: Record<string, React.ComponentType<{ size?: number }>> = {
   github: SiGithub,
@@ -76,39 +78,45 @@ export default function Contact() {
           <h2 className="font-heading text-4xl font-bold text-white sm:text-5xl">
             Let&rsquo;s work together
           </h2>
-          <p className="mx-auto mt-4 max-w-xl leading-relaxed text-slate-400">
+          <Reveal><p className="mx-auto mt-4 max-w-xl leading-relaxed text-slate-400">
             I&rsquo;m currently looking for software engineering internships.
             Have an opportunity or a project in mind? I&rsquo;d love to hear
             from you.
-          </p>
+          </p></Reveal>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href={`mailto:${personal.email}`}
-              className="rounded-full bg-coral px-7 py-3 text-sm font-semibold text-navy transition-colors hover:bg-softpink"
-            >
-              Say hello
-            </a>
-            <button
-              type="button"
-              onClick={copyEmail}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-slate-200 transition-colors hover:border-coral hover:text-coral"
-            >
-              {copied ? (
-                <Check size={16} aria-hidden="true" />
-              ) : (
-                <Copy size={16} aria-hidden="true" />
-              )}
-              {copied ? 'Copied!' : 'Copy email'}
-            </button>
-            <a
-              href={personal.resumeUrl}
-              download
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-slate-200 transition-colors hover:border-coral hover:text-coral"
-            >
-              <Download size={16} aria-hidden="true" />
-              Download resume
-            </a>
+            <Magnetic>
+              <a
+                href={`mailto:${personal.email}`}
+                className="rounded-full bg-coral px-7 py-3 text-sm font-semibold text-navy transition-colors hover:bg-softpink"
+              >
+                Say hello
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <button
+                type="button"
+                onClick={copyEmail}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-slate-200 transition-colors hover:border-coral hover:text-coral"
+              >
+                {copied ? (
+                  <Check size={16} aria-hidden="true" />
+                ) : (
+                  <Copy size={16} aria-hidden="true" />
+                )}
+                {copied ? 'Copied!' : 'Copy email'}
+              </button>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href={personal.resumeUrl}
+                download
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-slate-200 transition-colors hover:border-coral hover:text-coral"
+              >
+                <Download size={16} aria-hidden="true" />
+                Download resume
+              </a>
+            </Magnetic>
           </div>
 
           <div className="mt-12 flex items-center justify-center gap-4">

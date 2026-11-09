@@ -20,7 +20,7 @@ export default function Education() {
   return (
     <section id="education" className="scroll-mt-20 px-4 py-24 sm:px-6">
       <div className="mx-auto max-w-3xl">
-        <SectionHeading>`Education</SectionHeading>
+        <SectionHeading number="05" title="Education" />
 
         <motion.div
           variants={listVariants}
