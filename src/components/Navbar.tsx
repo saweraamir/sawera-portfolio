@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { FileText, Menu, X } from 'lucide-react'
 import { personal } from '../data/content'
 
@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy/70 backdrop-blur-md">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-        <a href="#top" className="font-heading text-lg font-semibold text-white">
+        <a href="#home" className="font-heading text-lg font-semibold text-white">
           {personal.name}
           <span className="text-coral">.</span>
         </a>

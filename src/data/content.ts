@@ -8,6 +8,7 @@ export const personal = {
     "CS @ Beijing Institute of Technology",
     "Freelance web developer since 2021",
     "Building PatternForge — where code meets crochet",
+    "/sawera.jpg",
   ],
   location: "Beijing, China",
   email: "saweraamir25@gmail.com",

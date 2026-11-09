@@ -1,4 +1,5 @@
-import Navbar from './components/Navbar'
+﻿import Navbar from './components/Navbar'
+import Hero from './components/Hero'
 
 const sections = [
   { id: 'about', label: 'About' },
@@ -13,6 +14,7 @@ export default function App() {
     <div id="top">
       <Navbar />
       <main>
+        <Hero />
         {sections.map((section) => (
           <section
             key={section.id}
