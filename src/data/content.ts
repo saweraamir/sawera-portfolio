@@ -165,13 +165,6 @@ export const projects: Project[] = [
     live: "", // add URL if you're allowed to link it
     image: "/projects/mcs.png",
   },
-  {
-    name: "By ALL'E",
-    description: "Front-end website for a Dubai fashion label (client work).",
-    tech: ["WordPress", "Elementor", "CSS"],
-    live: "", // add URL if you're allowed to link it
-    image: "/projects/byalle.png",
-  },
 ];
 
 export const education = [
