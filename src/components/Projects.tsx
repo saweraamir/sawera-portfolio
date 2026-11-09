@@ -38,8 +38,8 @@ function ProjectImage({ name, src }: { name: string; src?: string }) {
       .slice(0, 2)
       .join('')
     return (
-      <div className="flex h-44 w-full items-center justify-center bg-gradient-to-br from-coral/40 via-mustard/30 to-softpink/30">
-        <span className="font-heading text-4xl font-bold text-white/80">
+      <div className="flex h-44 w-full items-center justify-center bg-gradient-to-br from-coral to-softpink">
+        <span className="font-heading text-4xl font-bold text-white">
           {initials}
         </span>
       </div>
@@ -187,7 +187,7 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="scroll-mt-20 px-4 py-24 sm:px-6">
+    <section id="projects" className="scroll-mt-20 px-4 py-16 lg:py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <SectionHeading number="04" title="Projects" />
 
@@ -274,7 +274,7 @@ export default function Projects() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-8 grid gap-6 sm:grid-cols-2"
         >
           {others.map((project) => (
             <ProjectCard

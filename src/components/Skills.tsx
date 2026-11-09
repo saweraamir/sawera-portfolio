@@ -164,7 +164,7 @@ export default function Skills() {
     names.map(({ name }) => ({ name, ...iconMap[name] }))
 
   return (
-    <section id="skills" className="scroll-mt-20 px-4 py-24 sm:px-6">
+    <section id="skills" className="scroll-mt-20 px-4 py-16 lg:py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <SectionHeading number="02" title="Skills" />
 

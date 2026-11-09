@@ -62,7 +62,7 @@ export default function About() {
   }
 
   return (
-    <section id="about" className="scroll-mt-20 px-4 py-24 sm:px-6">
+    <section id="about" className="scroll-mt-20 px-4 py-16 lg:py-20 sm:px-6">
       <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
         {/* Photo — top on mobile, left column on desktop */}
         <motion.div

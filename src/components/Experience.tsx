@@ -96,7 +96,7 @@ export default function Experience() {
     <section
       ref={sectionRef}
       id="experience"
-      className="scroll-mt-20 px-4 py-24 sm:px-6"
+      className="scroll-mt-20 px-4 py-16 lg:py-20 sm:px-6"
     >
       <div className="mx-auto max-w-6xl">
         <SectionHeading number="03" title="Experience" />

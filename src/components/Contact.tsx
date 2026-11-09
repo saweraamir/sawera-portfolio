@@ -70,7 +70,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="scroll-mt-20 overflow-hidden px-4 py-32 sm:px-6">
+    <section id="contact" className="scroll-mt-20 overflow-hidden px-4 py-16 lg:py-20 sm:px-6">
       <div className="relative mx-auto max-w-3xl text-center">
         <YarnBallDecor />
 

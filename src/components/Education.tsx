@@ -18,8 +18,8 @@ export default function Education() {
   }
 
   return (
-    <section id="education" className="scroll-mt-20 px-4 py-24 sm:px-6">
-      <div className="mx-auto max-w-3xl">
+    <section id="education" className="scroll-mt-20 px-4 py-16 lg:py-20 sm:px-6">
+      <div className="mx-auto max-w-6xl">
         <SectionHeading number="05" title="Education" />
 
         <motion.div
@@ -27,7 +27,7 @@ export default function Education() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="mt-10 space-y-6"
+          className="mt-10 grid gap-6 md:grid-cols-2"
         >
           {education.map((item) => (
             <motion.article

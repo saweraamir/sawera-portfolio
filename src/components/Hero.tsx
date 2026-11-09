@@ -74,10 +74,10 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="flex min-h-screen flex-col items-center justify-center gap-8 px-4 md:flex-row md:gap-12 md:px-12 lg:px-20"
+      className="flex min-h-screen flex-col items-center justify-center gap-8 px-4 lg:flex-row lg:gap-12 lg:px-12"
     >
       {/* Yarn ball: on top for mobile (smaller), right for desktop */}
-      <div className="order-1 h-56 w-56 shrink-0 sm:h-72 sm:w-72 md:order-2 md:h-[26rem] md:w-[26rem] lg:h-[30rem] lg:w-[30rem]">
+      <div className="order-1 h-[70vw] max-h-[26rem] max-w-[26rem] w-[70vw] shrink-0 lg:order-2 lg:h-[28rem] lg:w-[28rem]">
         <Suspense fallback={<BallLoader />}>
           <YarnBall />
         </Suspense>
@@ -86,12 +86,12 @@ export default function Hero() {
       {/* Text: below the ball on mobile, left on desktop */}
       <motion.div
         {...fadeIn}
-        className="order-2 max-w-xl text-center md:order-1 md:text-left"
+        className="order-2 max-w-xl text-center lg:order-1 lg:text-left"
       >
         <p className="text-sm font-semibold uppercase tracking-widest text-coral">
           Hi, I&rsquo;m
         </p>
-        <h1 className="mt-2 whitespace-nowrap font-heading font-bold leading-[0.95] text-[clamp(3rem,9vw,9rem)] md:text-[clamp(3rem,7vw,7.5rem)] lg:text-[clamp(3rem,9vw,9rem)]">
+        <h1 className="mt-2 whitespace-nowrap font-heading font-bold leading-[0.95] text-[clamp(3.5rem,13vw,9rem)] md:text-[clamp(5rem,10vw,6rem)] lg:text-[clamp(4rem,9vw,9rem)]">
   <span className="bg-gradient-to-r from-coral via-mustard to-softpink bg-clip-text text-transparent">
     {reducedMotion
       ? personal.name
