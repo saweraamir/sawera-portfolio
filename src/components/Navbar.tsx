@@ -1,4 +1,5 @@
-﻿import { useState } from 'react'
+﻿import { useEffect, useState } from 'react'
+import { motion, useScroll } from 'framer-motion'
 import { FileText, Menu, X } from 'lucide-react'
 import { personal } from '../data/content'
 
@@ -11,11 +12,55 @@ const links = [
   { label: 'Contact', href: '#contact' },
 ]
 
+const SECTION_IDS = [
+  'home',
+  'about',
+  'skills',
+  'experience',
+  'projects',
+  'education',
+  'contact',
+]
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState('')
+  const { scrollYProgress } = useScroll()
+
+  // Highlight the nav link of the section currently in view.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id)
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
+
+  const linkClass = (href: string) => {
+    const isActive = active === href.slice(1)
+    return `border-b border-dashed pb-0.5 text-sm transition-colors ${
+      isActive
+        ? 'border-coral text-coral'
+        : 'border-transparent text-slate-300 hover:text-coral'
+    }`
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy/70 backdrop-blur-md">
+      {/* Coral yarn-thread scroll progress */}
+      <motion.div
+        aria-hidden="true"
+        style={{ scaleX: scrollYProgress }}
+        className="absolute inset-x-0 top-0 h-0.5 origin-left bg-coral"
+      />
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <a href="#home" className="font-heading text-lg font-semibold text-white">
           {personal.name}
@@ -23,12 +68,15 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-slate-300 transition-colors hover:text-coral"
+              aria-current={
+                active === link.href.slice(1) ? 'true' : undefined
+              }
+              className={linkClass(link.href)}
             >
               {link.label}
             </a>
@@ -69,7 +117,14 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-coral"
+                aria-current={
+                  active === link.href.slice(1) ? 'true' : undefined
+                }
+                className={
+                  active === link.href.slice(1)
+                    ? 'rounded-lg px-3 py-2 text-sm text-coral'
+                    : 'rounded-lg px-3 py-2 text-sm text-slate-300 hover:bg-white/5 hover:text-coral'
+                }
               >
                 {link.label}
               </a>

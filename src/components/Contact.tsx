@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Check, Copy, Download, Mail } from 'lucide-react'
 import { FaLinkedin } from 'react-icons/fa'
 import { SiGithub } from 'react-icons/si'
@@ -68,7 +68,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="scroll-mt-20 px-4 py-32 sm:px-6">
+    <section id="contact" className="scroll-mt-20 overflow-hidden px-4 py-32 sm:px-6">
       <div className="relative mx-auto max-w-3xl text-center">
         <YarnBallDecor />
 

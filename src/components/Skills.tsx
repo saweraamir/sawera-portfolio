@@ -1,4 +1,4 @@
-﻿import { useRef } from 'react'
+import { useRef } from 'react'
 import type { MouseEvent } from 'react'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import type { IconType } from 'react-icons'
@@ -17,7 +17,8 @@ import {
   SiPython,
   SiWordpress,
 } from 'react-icons/si'
-import { skills } from '../data/content'
+import { skills  } from '../data/content'
+import SectionHeading from './SectionHeading'
 
 /** Brand logo + color per skill. Colors follow each brand's official palette;
  *  GitHub and Gradle are lightened because their official colors are
@@ -161,13 +162,7 @@ export default function Skills() {
   return (
     <section id="skills" className="scroll-mt-20 px-4 py-24 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
-          Skills
-        </h2>
-        <div
-          aria-hidden="true"
-          className="mt-3 h-0.5 w-24 border-t-2 border-dashed border-coral"
-        />
+        <SectionHeading>`Skills</SectionHeading>
 
         <div className="mt-10 grid gap-12 lg:grid-cols-2">
           {/* Programming + Tools — top on mobile, left on desktop */}

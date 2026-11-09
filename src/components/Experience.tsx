@@ -1,7 +1,8 @@
-﻿import { useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, type Variants } from 'framer-motion'
 import { Calendar, MapPin } from 'lucide-react'
-import { experience } from '../data/content'
+import { experience  } from '../data/content'
+import SectionHeading from './SectionHeading'
 
 function TimelineKnot() {
   return (
@@ -98,13 +99,7 @@ export default function Experience() {
       className="scroll-mt-20 px-4 py-24 sm:px-6"
     >
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
-          Experience
-        </h2>
-        <div
-          aria-hidden="true"
-          className="mt-3 h-0.5 w-24 border-t-2 border-dashed border-coral"
-        />
+        <SectionHeading>`Experience</SectionHeading>
 
         <div className="relative mt-12">
           {/* Faint base line: left on mobile, centered on desktop */}

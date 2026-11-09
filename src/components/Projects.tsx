@@ -1,9 +1,10 @@
-﻿import { lazy, Suspense, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useMemo, useRef, useState } from 'react'
 import type { MouseEvent } from 'react'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import { SiGithub } from 'react-icons/si'
-import { projects } from '../data/content'
+import { projects  } from '../data/content'
+import SectionHeading from './SectionHeading'
 import type { Project } from '../data/content'
 
 const CrochetCircle = lazy(() => import('../canvas/CrochetCircle'))
@@ -188,13 +189,7 @@ export default function Projects() {
   return (
     <section id="projects" className="scroll-mt-20 px-4 py-24 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
-          Projects
-        </h2>
-        <div
-          aria-hidden="true"
-          className="mt-3 h-0.5 w-24 border-t-2 border-dashed border-coral"
-        />
+        <SectionHeading>`Projects</SectionHeading>
 
         {/* Featured project */}
         {featured && (

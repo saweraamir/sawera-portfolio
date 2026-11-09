@@ -1,4 +1,4 @@
-﻿import { lazy, Suspense, useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { personal } from '../data/content'
 
@@ -50,7 +50,7 @@ function Typewriter() {
   }
 
   return (
-    <p className="min-h-7 text-lg text-slate-300">
+    <p className="min-h-12 text-lg text-slate-300">
       {text}
       <span className="animate-pulse text-coral" aria-hidden="true">
         |

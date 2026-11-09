@@ -1,6 +1,7 @@
-﻿import { motion, useReducedMotion, type Variants } from 'framer-motion'
+import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { Calendar, MapPin, Trophy } from 'lucide-react'
-import { awards, education } from '../data/content'
+import { awards, education  } from '../data/content'
+import SectionHeading from './SectionHeading'
 
 export default function Education() {
   const reducedMotion = useReducedMotion()
@@ -19,13 +20,7 @@ export default function Education() {
   return (
     <section id="education" className="scroll-mt-20 px-4 py-24 sm:px-6">
       <div className="mx-auto max-w-3xl">
-        <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
-          Education
-        </h2>
-        <div
-          aria-hidden="true"
-          className="mt-3 h-0.5 w-24 border-t-2 border-dashed border-coral"
-        />
+        <SectionHeading>`Education</SectionHeading>
 
         <motion.div
           variants={listVariants}
