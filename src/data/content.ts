@@ -8,12 +8,12 @@ export const personal = {
     "CS @ Beijing Institute of Technology",
     "Freelance web developer since 2021",
     "Building PatternForge — where code meets crochet",
-    "/sawera.jpg",
   ],
   location: "Beijing, China",
   email: "saweraamir25@gmail.com",
   // Phone & WeChat intentionally left off the public site — share them on request.
   resumeUrl: "/Sawera_Resume.pdf", // put the PDF in /public
+    photo: "/sawera.jpg",
 };
 
 export const socials = [

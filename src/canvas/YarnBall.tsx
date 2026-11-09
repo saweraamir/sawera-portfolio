@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react'
+﻿import { useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -113,6 +113,11 @@ function AnimatedYarn({
 
   return (
     <group ref={group}>
+      {/* Solid inner sphere so the ball reads as full yarn, not hollow */}
+      <mesh>
+        <sphereGeometry args={[1.35, 32, 32]} />
+        <meshStandardMaterial color="#c4574b" roughness={1} />
+      </mesh>
       <YarnStrands count={strandCount} />
       <LooseThread />
     </group>
@@ -135,7 +140,7 @@ export default function YarnBall() {
   )
 
   return (
-    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 45 }}>
+    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 45 }}>
       <ambientLight intensity={0.8} />
       <pointLight position={[3, 3, 4]} intensity={60} color="#ffd9a8" />
       <AnimatedYarn
