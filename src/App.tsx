@@ -1,9 +1,9 @@
 ﻿import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Skills from './components/Skills'
 
 const sections = [
-  { id: 'skills', label: 'Skills' },
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
@@ -16,6 +16,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Skills />
         {sections.map((section) => (
           <section
             key={section.id}
