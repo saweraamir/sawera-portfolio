@@ -1,0 +1,31 @@
+# Project: Sawera's 3D portfolio — theme "Code × Crochet"
+
+## Stack
+- Vite + React + TypeScript
+- Tailwind CSS v4 (via @tailwindcss/vite plugin)
+- three, @react-three/fiber, @react-three/drei for 3D
+- framer-motion for scroll and entrance animations
+- lucide-react for UI icons
+
+## Content
+- ALL personal text comes from src/data/content.ts. Never hardcode CV text in components.
+- Do not change the structure or exported names of content.ts unless asked.
+
+## Structure
+- src/components  -> 2D sections (Navbar, Hero, About, Skills, Experience, Projects, Education, Contact, Footer)
+- src/canvas      -> 3D scenes (YarnBall, CrochetCircle, SkillsCloud)
+- src/data        -> content.ts
+- public/         -> resume PDF, project screenshots
+
+## Design
+- Dark navy background (#0b1020). Accent colors: coral #ff7a6b, mustard #f5b942, soft pink #f7a8c4.
+- Headings: a rounded modern font (e.g. "Poppins" from Google Fonts); body: "Inter".
+- Warm, handmade-meets-tech feel. Generous spacing, rounded corners, subtle glow on accents.
+
+## Rules
+- Mobile-first and fully responsive. On screens under 768px, reduce or disable heavy 3D (fewer objects, no post-processing).
+- Wrap every <Canvas> in React.Suspense with a simple loader, and lazy-load 3D components.
+- Keep 3D at 60fps: limit geometry counts, use instancing for repeated objects.
+- Respect prefers-reduced-motion.
+- Work on ONE task at a time. After each task, run `npm run build` and fix all errors before saying you're done.
+- Don't install extra libraries without telling me why.
