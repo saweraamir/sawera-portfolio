@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+﻿import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { personal } from '../data/content'
 
@@ -93,7 +93,7 @@ export default function Hero() {
         <h1 className="mt-2 text-5xl font-bold text-white sm:text-6xl lg:text-7xl">
           {personal.name}
         </h1>
-        <p className="mt-3 text-xl text-slate-300">{personal.role}</p>
+        <p className="mt-3 text-balance text-xl text-slate-300">{personal.role}</p>
         <div className="mt-4">
           <Typewriter />
         </div>

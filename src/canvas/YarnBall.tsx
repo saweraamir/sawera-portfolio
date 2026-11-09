@@ -67,7 +67,13 @@ function YarnStrands({ count }: { count: number }) {
 /** One loose thread that leaves the ball and curls downward. */
 function LooseThread() {
   const geometry = useMemo(() => {
-    const start = randomUnitVector().multiplyScalar(BALL_RADIUS)
+    // Anchor the thread in the upper hemisphere so it always hangs from the
+    // top of the ball — this keeps its lowest point bounded so nothing clips
+    // at the canvas edge, even when the ball is scaled up on desktop.
+    const dir = randomUnitVector()
+    dir.y = Math.max(dir.y, 0.2)
+    dir.normalize()
+    const start = dir.multiplyScalar(BALL_RADIUS)
     const curve = new THREE.CatmullRomCurve3([
       start,
       start.clone().add(new THREE.Vector3(0.4, 0.2, 0.3)),
@@ -88,9 +94,11 @@ function LooseThread() {
 function AnimatedYarn({
   reducedMotion,
   strandCount,
+  scale,
 }: {
   reducedMotion: boolean
   strandCount: number
+  scale: number
 }) {
   const group = useRef<THREE.Group>(null)
 
@@ -112,7 +120,7 @@ function AnimatedYarn({
   })
 
   return (
-    <group ref={group}>
+    <group ref={group} scale={scale}>
       {/* Solid inner sphere so the ball reads as full yarn, not hollow */}
       <mesh>
         <sphereGeometry args={[1.35, 32, 32]} />
@@ -131,7 +139,7 @@ export default function YarnBall() {
       window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     [],
   )
-  // Under 768px: fewer strands to keep things at 60fps.
+  // Under 768px: fewer strands and no upscaling to keep things at 60fps.
   const isMobile = useMemo(
     () =>
       typeof window !== 'undefined' &&
@@ -146,6 +154,7 @@ export default function YarnBall() {
       <AnimatedYarn
         reducedMotion={reducedMotion}
         strandCount={isMobile ? 24 : 40}
+        scale={isMobile ? 1 : 1.35}
       />
     </Canvas>
   )
