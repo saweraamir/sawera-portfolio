@@ -4,10 +4,9 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
-
-const sections = [
-  { id: 'contact', label: 'Contact' },
-]
+import Education from './components/Education'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 export default function App() {
   return (
@@ -19,19 +18,10 @@ export default function App() {
         <Skills />
         <Experience />
         <Projects />
-        {sections.map((section) => (
-          <section
-            key={section.id}
-            id={section.id}
-            className="flex min-h-screen scroll-mt-20 items-center justify-center px-4"
-          >
-            <h2 className="font-heading text-4xl font-semibold text-white">
-              {section.label}
-              <span className="text-coral">.</span>
-            </h2>
-          </section>
-        ))}
+        <Education />
+        <Contact />
       </main>
+      <Footer />
     </div>
   )
 }
